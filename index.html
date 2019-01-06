@@ -62,6 +62,74 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java-界面组件显示不及时" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/06/java-界面组件显示不及时/" class="article-date">
+  <time datetime="2019-01-06T07:53:17.000Z" itemprop="datePublished">2019-01-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/06/java-界面组件显示不及时/">java 界面组件显示不及时</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>很头疼，用JFrame做界面时总是遇到各种组件显示不及时，经过各种蛇皮操作，终于找到了解决方法！</strong></p>
+<h2 id="我的部分界面代码如下："><a href="#我的部分界面代码如下：" class="headerlink" title="我的部分界面代码如下："></a>我的部分界面代码如下：</h2><p>记住一定要把JFrame的操作代码放在组件添加代码的后面！</p>
+<p>public abstract class Gui  implements ActionListener {</p>
+<p>​    </p>
+<pre><code>public JFrame f = new JFrame(&quot;相似单词查询&quot;);
+public JPanel jp = new JPanel();
+public JButton jb = new JButton(&quot;查询&quot;);
+public JTextField jtf = new JTextField();
+public JTextArea jta1 = new JTextArea();
+public JTextArea jta2 = new JTextArea();
+public Gui() {
+    // TODO Auto-generated constructor stub
+
+    jp.setLayout(null);
+
+    JLabel lab1 = new JLabel(&quot;输入单词：&quot;);
+    lab1.setBounds(30, 20, 80, 30);
+    jp.add(lab1);
+</code></pre><p>​<br>        jtf.setBounds(110, 20, 300, 30);<br>        jtf.setFont(new Font(“Timesnewroman”, Font.PLAIN, 18));<br>        jp.add(jtf);</p>
+<p>​<br>        jb.setBounds(460, 20, 60, 30);<br>        jb.setMargin(new Insets(0,0,0,0));<br>        jb.addActionListener(this);<br>        jp.add(jb);</p>
+<pre><code>JLabel lab2 = new JLabel(&quot;查询结果：&quot;);
+lab2.setBounds(30, 100, 80, 30);
+jp.add(lab2);
+</code></pre><p>​<br>        jta1.setEditable(true);<br>        jta1.setLineWrap(true);<br>        jta1.setFont(new Font(“Timesnewroman”, Font.PLAIN, 18));<br>        jta1.setBounds(110, 110, 170, 300);<br>        JScrollPane jsp = new JScrollPane(jta1);<br>        jsp.setBounds(110, 110, 170, 300);<br>        jp.add(jsp);</p>
+<pre><code>jta2.setEditable(true);
+jta2.setLineWrap(true);
+jta2.setFont(new Font(&quot;Timesnewroman&quot;, Font.PLAIN, 18));
+jta2.setBounds(300, 110, 170, 300);
+JScrollPane jsp2 = new JScrollPane(jta2);
+jsp2.setBounds(300, 110, 170, 300);
+jp.add(jsp2);
+</code></pre><p>​<br>        f.setBounds(550, 300, 600, 500);<br>        f.setResizable(false);<br>        f.setVisible(true);<br>        f.setContentPane(jp);<br>        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);<br>    }<br>    }<br><img src="D:\Node\Blog\界面.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/06/java-界面组件显示不及时/" data-id="cjqklxb4l00038gokl3fftqvh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JavaCrawler" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/02/JavaCrawler/" class="article-date">
@@ -145,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/02/JavaCrawler/" data-id="cjqf2uktw0002ngokeh029tf0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/02/JavaCrawler/" data-id="cjqklxb4j00028gok4yqa9zmi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -181,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/Java/" data-id="cjqf2uktn0000ngok5vk9y01a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/Java/" data-id="cjqklxb4800008gok9d4k5do0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -226,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/hello-world/" data-id="cjqf2uktu0001ngok36k68lfm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/hello-world/" data-id="cjqklxb4g00018gok1dpjigwn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,6 +333,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/01/06/java-界面组件显示不及时/">java 界面组件显示不及时</a>
+          </li>
         
           <li>
             <a href="/2019/01/02/JavaCrawler/">JavaCrawler</a>

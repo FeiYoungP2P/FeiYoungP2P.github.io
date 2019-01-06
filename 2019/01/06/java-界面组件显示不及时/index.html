@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>java 界面组件显示不及时 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="很头疼，用JFrame做界面时总是遇到各种组件显示不及时，经过各种蛇皮操作，终于找到了解决方法！ 我的部分界面代码如下：记住一定要把JFrame的操作代码放在组件添加代码的后面！ public abstract class Gui  implements ActionListener { ​     public JFrame f = new JFrame(&amp;quot;相似单词查询&amp;quot;);">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java 界面组件显示不及时">
+<meta property="og:url" content="http://yoursite.com/2019/01/06/java-界面组件显示不及时/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="很头疼，用JFrame做界面时总是遇到各种组件显示不及时，经过各种蛇皮操作，终于找到了解决方法！ 我的部分界面代码如下：记住一定要把JFrame的操作代码放在组件添加代码的后面！ public abstract class Gui  implements ActionListener { ​     public JFrame f = new JFrame(&amp;quot;相似单词查询&amp;quot;);">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="d:/Node/Blog/界面.png">
+<meta property="og:updated_time" content="2019-01-06T07:59:42.765Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java 界面组件显示不及时">
+<meta name="twitter:description" content="很头疼，用JFrame做界面时总是遇到各种组件显示不及时，经过各种蛇皮操作，终于找到了解决方法！ 我的部分界面代码如下：记住一定要把JFrame的操作代码放在组件添加代码的后面！ public abstract class Gui  implements ActionListener { ​     public JFrame f = new JFrame(&amp;quot;相似单词查询&amp;quot;);">
+<meta name="twitter:image" content="d:/Node/Blog/界面.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-java-界面组件显示不及时" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/06/java-界面组件显示不及时/" class="article-date">
+  <time datetime="2019-01-06T07:53:17.000Z" itemprop="datePublished">2019-01-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java 界面组件显示不及时
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>很头疼，用JFrame做界面时总是遇到各种组件显示不及时，经过各种蛇皮操作，终于找到了解决方法！</strong></p>
+<h2 id="我的部分界面代码如下："><a href="#我的部分界面代码如下：" class="headerlink" title="我的部分界面代码如下："></a>我的部分界面代码如下：</h2><p>记住一定要把JFrame的操作代码放在组件添加代码的后面！</p>
+<p>public abstract class Gui  implements ActionListener {</p>
+<p>​    </p>
+<pre><code>public JFrame f = new JFrame(&quot;相似单词查询&quot;);
+public JPanel jp = new JPanel();
+public JButton jb = new JButton(&quot;查询&quot;);
+public JTextField jtf = new JTextField();
+public JTextArea jta1 = new JTextArea();
+public JTextArea jta2 = new JTextArea();
+public Gui() {
+    // TODO Auto-generated constructor stub
+
+    jp.setLayout(null);
+
+    JLabel lab1 = new JLabel(&quot;输入单词：&quot;);
+    lab1.setBounds(30, 20, 80, 30);
+    jp.add(lab1);
+</code></pre><p>​<br>        jtf.setBounds(110, 20, 300, 30);<br>        jtf.setFont(new Font(“Timesnewroman”, Font.PLAIN, 18));<br>        jp.add(jtf);</p>
+<p>​<br>        jb.setBounds(460, 20, 60, 30);<br>        jb.setMargin(new Insets(0,0,0,0));<br>        jb.addActionListener(this);<br>        jp.add(jb);</p>
+<pre><code>JLabel lab2 = new JLabel(&quot;查询结果：&quot;);
+lab2.setBounds(30, 100, 80, 30);
+jp.add(lab2);
+</code></pre><p>​<br>        jta1.setEditable(true);<br>        jta1.setLineWrap(true);<br>        jta1.setFont(new Font(“Timesnewroman”, Font.PLAIN, 18));<br>        jta1.setBounds(110, 110, 170, 300);<br>        JScrollPane jsp = new JScrollPane(jta1);<br>        jsp.setBounds(110, 110, 170, 300);<br>        jp.add(jsp);</p>
+<pre><code>jta2.setEditable(true);
+jta2.setLineWrap(true);
+jta2.setFont(new Font(&quot;Timesnewroman&quot;, Font.PLAIN, 18));
+jta2.setBounds(300, 110, 170, 300);
+JScrollPane jsp2 = new JScrollPane(jta2);
+jsp2.setBounds(300, 110, 170, 300);
+jp.add(jsp2);
+</code></pre><p>​<br>        f.setBounds(550, 300, 600, 500);<br>        f.setResizable(false);<br>        f.setVisible(true);<br>        f.setContentPane(jp);<br>        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);<br>    }<br>    }<br><img src="D:\Node\Blog\界面.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/06/java-界面组件显示不及时/" data-id="cjqklxb4l00038gokl3fftqvh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/02/JavaCrawler/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaCrawler</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/06/java-界面组件显示不及时/">java 界面组件显示不及时</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/02/JavaCrawler/">JavaCrawler</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/31/Java/">Java</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/31/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
