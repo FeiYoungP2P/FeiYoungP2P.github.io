@@ -7,17 +7,17 @@
   
   <title>MV模式操作数据库 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下**public class ConnDB {**     private Connection ct = null;     public Connection getConn() {         String driver = &amp;quot;com.mysql.jdbc.Driver&amp;quot;;         String url">
+  <meta name="description" content="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下public class ConnDB {    private Connection ct = null;    public Connection getConn() {        String driver = “com.mysql.jdbc.Driver”;        String url = “jdbc:mysql://l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MV模式操作数据库">
 <meta property="og:url" content="http://yoursite.com/2019/01/23/MV模式操作数据库/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下**public class ConnDB {**     private Connection ct = null;     public Connection getConn() {         String driver = &amp;quot;com.mysql.jdbc.Driver&amp;quot;;         String url">
+<meta property="og:description" content="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下public class ConnDB {    private Connection ct = null;    public Connection getConn() {        String driver = “com.mysql.jdbc.Driver”;        String url = “jdbc:mysql://l">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-23T13:55:15.557Z">
+<meta property="og:updated_time" content="2019-01-23T14:02:58.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MV模式操作数据库">
-<meta name="twitter:description" content="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下**public class ConnDB {**     private Connection ct = null;     public Connection getConn() {         String driver = &amp;quot;com.mysql.jdbc.Driver&amp;quot;;         String url">
+<meta name="twitter:description" content="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下public class ConnDB {    private Connection ct = null;    public Connection getConn() {        String driver = “com.mysql.jdbc.Driver”;        String url = “jdbc:mysql://l">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -86,55 +86,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下"><a href="#最近终于学会了新模式MV，做了一个数据库连接程序测试了一下" class="headerlink" title="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下"></a>最近终于学会了新模式MV，做了一个数据库连接程序测试了一下</h2><p><code>**public class ConnDB {**
-    private Connection ct = null;
-    public Connection getConn() {
-        String driver = &quot;com.mysql.jdbc.Driver&quot;;
-        String url = &quot;jdbc:mysql://localhost:3306/users&quot;;
-        String user = &quot;&quot;;
-        String password = &quot;######&quot;;
-        try {
-            Class.forName(driver);
-            ct = DriverManager.getConnection(url,user,password);
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-        return ct;
-    }</code><strong>}</strong>`</p>
-<p><code>**public class userBean {**</code><br>    private String userId;<br>    private String userName;<br>    private String passwd;<br>    public String getUserId() {<br>        return userId;<br>    }<br>    public void setUserId(String userId) {<br>        this.userId = userId;<br>    }<br>    public String getUserName() {<br>        return userName;<br>    }<br>    public void setUserName(String userName) {<br>        this.userName = userName;<br>    }<br>    public String getPasswd() {<br>        return passwd;<br>    }<br>    public void setPasswd(String passwd) {<br>        this.passwd = passwd;<br>    }<br><code>**}**</code></p>
-<p><code>**public class userBeanCl {**</code><br>    private Connection ct = null;<br>    private ResultSet rs = null;<br>    private PreparedStatement sta = null;<br>    public ArrayList<userbean> getResult() {<br>        String sql = “select * from userinfo”;<br>        ArrayList<userbean> arrlist = new ArrayList<userbean>();<br>        try {<br>            ConnDB cdb = new ConnDB();<br>            ct = cdb.getConn();<br>            sta = ct.prepareStatement(sql);<br>            rs = sta.executeQuery();<br>            while (rs.next()) {<br>                userBean ub = new userBean();<br>                ub.setUserId(rs.getString(“userid”));<br>                ub.setUserName(rs.getString(“username”));<br>                ub.setPasswd(rs.getString(“passwd”));<br>                arrlist.add(ub);<br>            }<br>        } catch (SQLException e) {<br>            // TODO Auto-generated catch block<br>            e.printStackTrace();<br>        }finally{<br>            this.closeM();<br>        }<br>        return arrlist;<br>    }</userbean></userbean></userbean></p>
-<pre><code>public void closeM() {
-    if (rs!=null) {
-        try {
-            rs.close();
-            rs = null;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-    if (ct!=null) {
-        try {
-            ct.close();
-            ct = null;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-    if (sta!=null) {
-        try {
-            sta.close();
-            sta = null;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre><p><code>**}**</code></p>
-<p><code>**public class Test {**</code><br>    public static void main(String[] args) {<br>        userBeanCl cl = new userBeanCl();<br>        ArrayList<userbean> userlist = cl.getResult();<br>        System.out.println(“ID\t”+”Name\t”+”Password\t”);<br>        for (int i = 0; i &lt; userlist.size(); i++) {<br>            userBean ub = userlist.get(i);<br>            System.out.println(ub.getUserId()+”\t”+ub.getUserName()+”\t”+ub.getPasswd());<br>        }<br>    }<br><code>**}**</code></userbean></p>
+        <h2 id="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下"><a href="#最近终于学会了新模式MV，做了一个数据库连接程序测试了一下" class="headerlink" title="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下"></a>最近终于学会了新模式MV，做了一个数据库连接程序测试了一下</h2><p>public class ConnDB {<br>    private Connection ct = null;<br>    public Connection getConn() {<br>        String driver = “com.mysql.jdbc.Driver”;<br>        String url = “jdbc:mysql://localhost:3306/users”;<br>        String user = “root”;<br>        String password = “123456”;<br>        try {<br>            Class.forName(driver);<br>            ct = DriverManager.getConnection(url,user,password);<br>        } catch (Exception e) {<br>            // TODO: handle exception<br>            e.printStackTrace();<br>        }<br>        return ct;<br>    }<br>}</p>
+<p>public class userBean {<br>    private String userId;<br>    private String userName;<br>    private String passwd;<br>    public String getUserId() {<br>        return userId;<br>    }<br>    public void setUserId(String userId) {<br>        this.userId = userId;<br>    }<br>    public String getUserName() {<br>        return userName;<br>    }<br>    public void setUserName(String userName) {<br>        this.userName = userName;<br>    }<br>    public String getPasswd() {<br>        return passwd;<br>    }<br>    public void setPasswd(String passwd) {<br>        this.passwd = passwd;<br>    }<br>}</p>
+<p>public class userBeanCl {<br>    private Connection ct = null;<br>    private ResultSet rs = null;<br>    private PreparedStatement sta = null;<br>    public ArrayList<userbean> getResult() {<br>        String sql = “select * from userinfo”;<br>        ArrayList<userbean> arrlist = new ArrayList<userbean>();<br>        try {<br>            ConnDB cdb = new ConnDB();<br>            ct = cdb.getConn();<br>            sta = ct.prepareStatement(sql);<br>            rs = sta.executeQuery();<br>            while (rs.next()) {<br>                userBean ub = new userBean();<br>                ub.setUserId(rs.getString(“userid”));<br>                ub.setUserName(rs.getString(“username”));<br>                ub.setPasswd(rs.getString(“passwd”));<br>                arrlist.add(ub);<br>            }<br>        } catch (SQLException e) {<br>            // TODO Auto-generated catch block<br>            e.printStackTrace();<br>        }finally{<br>            this.closeM();<br>        }<br>        return arrlist;<br>    }<br>    public void closeM() {<br>        if (rs!=null) {<br>            try {<br>                rs.close();<br>                rs = null;<br>            } catch (SQLException e) {<br>                // TODO Auto-generated catch block<br>                e.printStackTrace();<br>            }<br>        }<br>        if (ct!=null) {<br>            try {<br>                ct.close();<br>                ct = null;<br>            } catch (SQLException e) {<br>                // TODO Auto-generated catch block<br>                e.printStackTrace();<br>            }<br>        }<br>        if (sta!=null) {<br>            try {<br>                sta.close();<br>                sta = null;<br>            } catch (SQLException e) {<br>                // TODO Auto-generated catch block<br>                e.printStackTrace();<br>            }<br>        }<br>    }<br>}</userbean></userbean></userbean></p>
 
       
     </div>
