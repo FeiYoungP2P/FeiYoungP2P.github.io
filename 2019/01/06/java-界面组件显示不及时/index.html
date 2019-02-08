@@ -7,17 +7,17 @@
   
   <title>java 界面组件显示不及时 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="很头疼，用JFrame做界面时总是遇到各种组件显示不及时，经过各种蛇皮操作，终于找到了解决方法！ 我的部分界面代码如下：记住一定要把JFrame的操作代码放在组件添加代码的后面！ public abstract class Gui  implements ActionListener { ​     public JFrame f = new JFrame(&amp;quot;相似单词查询&amp;quot;);">
+  <meta name="description" content="很头疼，用JFrame做界面时总是遇到各种组件显示不及时，经过各种蛇皮操作，终于找到了解决方法！ 我的部分界面代码如下：记住一定要把JFrame的操作代码放在组件添加代码的后面！ public abstract class Gui  implements ActionListener { ​     private JFrame f = new JFrame(&amp;quot;相似单词查询&amp;quot;)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java 界面组件显示不及时">
 <meta property="og:url" content="http://yoursite.com/2019/01/06/java-界面组件显示不及时/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="很头疼，用JFrame做界面时总是遇到各种组件显示不及时，经过各种蛇皮操作，终于找到了解决方法！ 我的部分界面代码如下：记住一定要把JFrame的操作代码放在组件添加代码的后面！ public abstract class Gui  implements ActionListener { ​     public JFrame f = new JFrame(&amp;quot;相似单词查询&amp;quot;);">
+<meta property="og:description" content="很头疼，用JFrame做界面时总是遇到各种组件显示不及时，经过各种蛇皮操作，终于找到了解决方法！ 我的部分界面代码如下：记住一定要把JFrame的操作代码放在组件添加代码的后面！ public abstract class Gui  implements ActionListener { ​     private JFrame f = new JFrame(&amp;quot;相似单词查询&amp;quot;)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-06T08:01:36.632Z">
+<meta property="og:updated_time" content="2019-02-08T12:01:51.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java 界面组件显示不及时">
-<meta name="twitter:description" content="很头疼，用JFrame做界面时总是遇到各种组件显示不及时，经过各种蛇皮操作，终于找到了解决方法！ 我的部分界面代码如下：记住一定要把JFrame的操作代码放在组件添加代码的后面！ public abstract class Gui  implements ActionListener { ​     public JFrame f = new JFrame(&amp;quot;相似单词查询&amp;quot;);">
+<meta name="twitter:description" content="很头疼，用JFrame做界面时总是遇到各种组件显示不及时，经过各种蛇皮操作，终于找到了解决方法！ 我的部分界面代码如下：记住一定要把JFrame的操作代码放在组件添加代码的后面！ public abstract class Gui  implements ActionListener { ​     private JFrame f = new JFrame(&amp;quot;相似单词查询&amp;quot;)">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -90,12 +90,12 @@
 <h2 id="我的部分界面代码如下："><a href="#我的部分界面代码如下：" class="headerlink" title="我的部分界面代码如下："></a>我的部分界面代码如下：</h2><p>记住一定要把JFrame的操作代码放在组件添加代码的后面！</p>
 <p>public abstract class Gui  implements ActionListener {</p>
 <p>​    </p>
-<pre><code>public JFrame f = new JFrame(&quot;相似单词查询&quot;);
-public JPanel jp = new JPanel();
-public JButton jb = new JButton(&quot;查询&quot;);
-public JTextField jtf = new JTextField();
-public JTextArea jta1 = new JTextArea();
-public JTextArea jta2 = new JTextArea();
+<pre><code>private JFrame f = new JFrame(&quot;相似单词查询&quot;);
+private JPanel jp = new JPanel();
+private JButton jb = new JButton(&quot;查询&quot;);
+private JTextField jtf = new JTextField();
+private JTextArea jta1 = new JTextArea();
+private JTextArea jta2 = new JTextArea();
 public Gui() {
     // TODO Auto-generated constructor stub
 
