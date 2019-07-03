@@ -90,7 +90,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/09/百度云网页播放器加速/" data-id="cju9eakkw0006fgokhi6a07fu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/09/百度云网页播放器加速/" data-id="cjxncaxdt0003lgok8oek8tb0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,7 +132,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/08/Python爬虫问题及解决办法1/" data-id="cju9eakks0004fgok4o7nyr9x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/08/Python爬虫问题及解决办法1/" data-id="cjxncaxdq0002lgokqhn77fca" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,14 +164,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下"><a href="#最近终于学会了新模式MV，做了一个数据库连接程序测试了一下" class="headerlink" title="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下"></a>最近终于学会了新模式MV，做了一个数据库连接程序测试了一下</h2><p>public class ConnDB {<br>    private Connection ct = null;<br>    public Connection getConn() {<br>        String driver = “com.mysql.jdbc.Driver”;<br>        String url = “jdbc:mysql://localhost:3306/users”;<br>        String user = “root”;<br>        String password = “123456”;<br>        try {<br>            Class.forName(driver);<br>            ct = DriverManager.getConnection(url,user,password);<br>        } catch (Exception e) {<br>            // TODO: handle exception<br>            e.printStackTrace();<br>        }<br>        return ct;<br>    }<br>}</p>
-<p>public class userBean {<br>    private String userId;<br>    private String userName;<br>    private String passwd;<br>    public String getUserId() {<br>        return userId;<br>    }<br>    public void setUserId(String userId) {<br>        this.userId = userId;<br>    }<br>    public String getUserName() {<br>        return userName;<br>    }<br>    public void setUserName(String userName) {<br>        this.userName = userName;<br>    }<br>    public String getPasswd() {<br>        return passwd;<br>    }<br>    public void setPasswd(String passwd) {<br>        this.passwd = passwd;<br>    }<br>}</p>
-<p>public class userBeanCl {<br>    private Connection ct = null;<br>    private ResultSet rs = null;<br>    private PreparedStatement sta = null;<br>    public ArrayList<userbean> getResult() {<br>        String sql = “select * from userinfo”;<br>        ArrayList<userbean> arrlist = new ArrayList<userbean>();<br>        try {<br>            ConnDB cdb = new ConnDB();<br>            ct = cdb.getConn();<br>            sta = ct.prepareStatement(sql);<br>            rs = sta.executeQuery();<br>            while (rs.next()) {<br>                userBean ub = new userBean();<br>                ub.setUserId(rs.getString(“userid”));<br>                ub.setUserName(rs.getString(“username”));<br>                ub.setPasswd(rs.getString(“passwd”));<br>                arrlist.add(ub);<br>            }<br>        } catch (SQLException e) {<br>            // TODO Auto-generated catch block<br>            e.printStackTrace();<br>        }finally{<br>            this.closeM();<br>        }<br>        return arrlist;<br>    }<br>    public void closeM() {<br>        if (rs!=null) {<br>            try {<br>                rs.close();<br>                rs = null;<br>            } catch (SQLException e) {<br>                // TODO Auto-generated catch block<br>                e.printStackTrace();<br>            }<br>        }<br>        if (ct!=null) {<br>            try {<br>                ct.close();<br>                ct = null;<br>            } catch (SQLException e) {<br>                // TODO Auto-generated catch block<br>                e.printStackTrace();<br>            }<br>        }<br>        if (sta!=null) {<br>            try {<br>                sta.close();<br>                sta = null;<br>            } catch (SQLException e) {<br>                // TODO Auto-generated catch block<br>                e.printStackTrace();<br>            }<br>        }<br>    }<br>}</userbean></userbean></userbean></p>
+        <h2 id="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下"><a href="#最近终于学会了新模式MV，做了一个数据库连接程序测试了一下" class="headerlink" title="最近终于学会了新模式MV，做了一个数据库连接程序测试了一下"></a>最近终于学会了新模式MV，做了一个数据库连接程序测试了一下</h2><p><code>public class ConnDB {</code><br>    private Connection ct = null;<br>    public Connection getConn() {<br>        String driver = “com.mysql.jdbc.Driver”;<br>        String url = “jdbc:mysql://localhost:3306/users”;<br>        String user = “root”;<br>        String password = “123456”;<br>        try {<br>            Class.forName(driver);<br>            ct = DriverManager.getConnection(url,user,password);<br>        } catch (Exception e) {<br>            // TODO: handle exception<br>            e.printStackTrace();<br>        }<br>        return ct;<br>    }<br><code>}</code></p>
+<p><code>public class userBean {</code><br>    private String userId;<br>    private String userName;<br>    private String passwd;<br>    public String getUserId() {<br>        return userId;<br>    }<br>    public void setUserId(String userId) {<br>        this.userId = userId;<br>    }<br>    public String getUserName() {<br>        return userName;<br>    }<br>    public void setUserName(String userName) {<br>        this.userName = userName;<br>    }<br>    public String getPasswd() {<br>        return passwd;<br>    }<br>    public void setPasswd(String passwd) {<br>        this.passwd = passwd;<br>    }<br><code>}</code></p>
+<p><code>public class userBeanCl {</code><br>    private Connection ct = null;<br>    private ResultSet rs = null;<br>    private PreparedStatement sta = null;<br>    public ArrayList<userbean> getResult() {<br>        String sql = “select * from userinfo”;<br>        ArrayList<userbean> arrlist = new ArrayList<userbean>();<br>        try {<br>            ConnDB cdb = new ConnDB();<br>            ct = cdb.getConn();<br>            sta = ct.prepareStatement(sql);<br>            rs = sta.executeQuery();<br>            while (rs.next()) {<br>                userBean ub = new userBean();<br>                ub.setUserId(rs.getString(“userid”));<br>                ub.setUserName(rs.getString(“username”));<br>                ub.setPasswd(rs.getString(“passwd”));<br>                arrlist.add(ub);<br>            }<br>        } catch (SQLException e) {<br>            // TODO Auto-generated catch block<br>            e.printStackTrace();<br>        }finally{<br>            this.closeM();<br>        }<br>        return arrlist;<br>    }<br>    public void closeM() {<br>        if (rs!=null) {<br>            try {<br>                rs.close();<br>                rs = null;<br>            } catch (SQLException e) {<br>                // TODO Auto-generated catch block<br>                e.printStackTrace();<br>            }<br>        }<br>        if (ct!=null) {<br>            try {<br>                ct.close();<br>                ct = null;<br>            } catch (SQLException e) {<br>                // TODO Auto-generated catch block<br>                e.printStackTrace();<br>            }<br>        }<br>        if (sta!=null) {<br>            try {<br>                sta.close();<br>                sta = null;<br>            } catch (SQLException e) {<br>                // TODO Auto-generated catch block<br>                e.printStackTrace();<br>            }<br>        }<br>    }<br><code>}</code></userbean></userbean></userbean></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/23/MV模式操作数据库/" data-id="cju9eakkl0001fgokjgu68utv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/23/MV模式操作数据库/" data-id="cjxncaxcv0000lgok4rsr4e52" class="article-share-link">Share</a>
       
       
     </footer>
@@ -239,7 +239,7 @@ jp.add(jsp2);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/06/java-界面组件显示不及时/" data-id="cju9eakku0005fgokooos6msh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/06/java-界面组件显示不及时/" data-id="cjxncaxe00006lgokzm4m2lqz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -332,7 +332,7 @@ jp.add(jsp2);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/02/JavaCrawler/" data-id="cju9eakko0002fgokp3m4mmrw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/02/JavaCrawler/" data-id="cjxncaxdw0004lgokijzea3wm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -368,7 +368,7 @@ jp.add(jsp2);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/Java/" data-id="cju9eakkf0000fgoklstq9ulk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/Java/" data-id="cjxncaxdm0001lgok3ntgy05j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -413,7 +413,7 @@ jp.add(jsp2);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/31/hello-world/" data-id="cju9eakkr0003fgokmrzip8da" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/31/hello-world/" data-id="cjxncaxdy0005lgokab55siqs" class="article-share-link">Share</a>
       
       
     </footer>
